@@ -1,5 +1,7 @@
 loadkeys la-latin1
 
+timedatectl set-ntp true
+
 SOME COMMANDS I RAN:
 Using fdisk:
 fdisk -l   (lists out the partitions)
