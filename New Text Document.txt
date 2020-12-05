@@ -1,0 +1,3 @@
+pacman -S --noconfirm xf86-video-amdgpu lightdm lightdm-gtk-greeter xorg-server gvim i3 lxterminal
+systemctl enable lightdm.service
+echo -e "[LightDM]\nlogind-check-graphical=true" | tee -a /etc/lightdm/lightdm.conf
