@@ -22,7 +22,7 @@ mkfs.ext4 /dev/sda3
 Base Install:
 mount /dev/sda3 /mnt (mounts it to mnt on live image)
 pacstrap /mnt base linux linux-firmware
-genfstab -U /mnt TWO GREATER THAN SIGNS /mnt/etc/fstab (YouTube doesn't allow angle brackets)
+genfstab -U /mnt >> /mnt/etc/fstab (YouTube doesn't allow angle brackets)
 
 Chroot:
 arch-chroot /mnt (change into root directory of our new installation)
