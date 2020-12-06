@@ -13,7 +13,7 @@ if [[ "$MACHINE"=="AMD" ]]
 then 
     pacman -S --noconfirm xf86-video-amdgpu
 else 
-    pacman -S --noconfirm xf86-video-vesa
+    pacman -S --noconfirm xf86-video-qxl
 fi
 
 pacman -S --noconfirm grub sudo networkmanager lightdm lightdm-gtk-greeter xorg-server efibootmgr dosfstools os-prober mtools lxterminal network-manager-applet gvim
