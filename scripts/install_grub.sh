@@ -1,14 +1,7 @@
 #!/bin/bash
-MACHINE=$1
-
 ln -sf /usr/share/zoneinfo/America/Bogota /etc/localtime
 hwclock --systohc
-cp locale.gen /etc/locale.gen
 locale-gen
-
-cp hostname /etc/hostname
-cp hosts /etc/hosts
-cp vconsole.conf /etc/vconsole.conf
 
 pacman -S --noconfirm grub sudo networkmanager efibootmgr dosfstools os-prober mtools
 systemctl enable NetworkManager
@@ -35,3 +28,21 @@ echo -e "$PASSWORD\n$PASSWORD" | passwd "$USERNAME"
 echo -e "$PASSWORD\n$PASSWORD" | passwd root
 echo -e "$USERNAME\tALL=(ALL:ALL) ALL" >> /etc/sudoers 
 mkdir -p /home/$USERNAME
+
+pacman -S --needed --noconfirm i3 lightdm lightdm-gtk-greeter xorg-server xorg-xinit lxterminal \
+	network-manager-applet gvim
+
+MACHINE="$1"
+
+if [[ "$MACHINE"=="AMD" ]]
+then 
+    echo "Installing AMD driver"	
+    pacman -S --noconfirm xf86-video-amdgpu
+else 
+    echo "Installing VBOX driver"	
+    pacman -S --noconfirm virtualbox-guest-utils
+fi
+
+USERNAME=$2
+chown $USERNAME:$USERNAME /home/$USERNAME
+cd /home/$USERNAME
