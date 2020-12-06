@@ -16,7 +16,7 @@ else
     pacman -S --noconfirm xf86-video-qxl
 fi
 
-pacman -S --noconfirm grub sudo networkmanager lightdm lightdm-gtk-greeter xorg-server efibootmgr dosfstools os-prober mtools lxterminal network-manager-applet gvim
+pacman -S --noconfirm grub sudo networkmanager lightdm lightdm-gtk-greeter xorg-server xorg-xinit efibootmgr dosfstools os-prober mtools lxterminal network-manager-applet gvim
 systemctl enable lightdm.service
 mkdir -p /etc/X11/xorg.conf.d/
 cp 20-keyboard.conf /etc/X11/xorg.conf.d/
