@@ -16,7 +16,7 @@ else
     pacman -S --noconfirm xf86-video-vesa
 fi
 
-pacman -S --noconfirm grub sudo networkmanager lightdm lightdm-gtk-greeter xorg-server efibootmgr dosfstools os-prober mtools lxterminal
+pacman -S --noconfirm grub sudo networkmanager lightdm lightdm-gtk-greeter xorg-server efibootmgr dosfstools os-prober mtools lxterminal network-manager-applet
 systemctl enable lightdm.service
 systemctl enable NetworkManager
 cp lightdm.conf /etc/lightdm/lightdm.conf
