@@ -27,6 +27,8 @@ git clone https://github.com/nbuitragob/arch-setup.git
 mv -r arch-setup /home/melferas
 cd /home/melferas/arch-setup
 sh init.sh
+cd ..
+rm -rf arch-setup
 
 passwd 
 useradd -m melferas
