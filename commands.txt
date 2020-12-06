@@ -26,7 +26,8 @@ pacman -S --noconfirm git
 git clone https://github.com/nbuitragob/arch-setup.git 
 mv -r arch-setup /home/melferas
 cd /home/melferas/arch-setup
-sh init.sh
+chmod +x install_grub.sh
+sh install_grub.sh
 cd ..
 rm -rf arch-setup
 
