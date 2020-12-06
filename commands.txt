@@ -22,7 +22,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 Chroot:
 arch-chroot /mnt (change into root directory of our new installation)
 
-pacman -S --noconfirm --needed git base-devel
+pacman -S --noconfirm git base-devel
 git clone https://github.com/nbuitragob/arch-setup.git 
 mv -r arch-setup /home/melferas
 cd /home/melferas/arch-setup
