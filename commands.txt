@@ -16,7 +16,7 @@ mount /dev/sda3 /mnt (mounts it to mnt on live image)
 mkdir -p /mnt/home
 mkdir -p /mnt/home/melferas
 mount /dev/sda4 /mnt/home
-pacstrap /mnt base linux linux-firmware
+pacstrap /mnt base base-devel linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab 
 
 Chroot:
