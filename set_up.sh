@@ -7,6 +7,7 @@ cp config/linux/vconsole.conf /etc/vconsole.conf
 
 scripts/install_grub.sh "$1"
 
-cp config/lightdm/lightdm.conf /etc/lightdm/lightdm.conf
 mkdir -p /etc/X11/xorg.conf.d/
 cp config/lightdm/20-keyboard.conf /etc/X11/xorg.conf.d/
+cp dotfiles/.config /home/$1/
+
