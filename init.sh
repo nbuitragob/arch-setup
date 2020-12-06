@@ -27,4 +27,4 @@ mount /dev/sda1 /boot/EFI
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# gvim i3 lxterminal networkmanager nm-applet 
+pacman -S --noconfirm --nedeed i3
