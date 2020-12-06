@@ -5,7 +5,7 @@ cp config/linux/hosts /etc/hosts
 cp config/linux/vconsole.conf /etc/vconsole.conf
 
 
-sh scripts/install_grub.sh
+scripts/install_grub.sh "$1"
 
 cp config/lightdm/lightdm.conf /etc/lightdm/lightdm.conf
 mkdir -p /etc/X11/xorg.conf.d/

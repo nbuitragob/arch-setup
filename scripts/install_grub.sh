@@ -15,14 +15,14 @@ read -p 'Username: ' USERNAME
 read -sp 'Password: ' PASSWORD
 echo
 read -sp 'Verify password: ' PASSWORD_2
-if [[ "$PASSWORD"=="$PASSWORD_" ]]; then
+if [ "$PASSWORD" = "$PASSWORD_2" ]; then
        echo -e "\npasswords match"
 else 
        echo "passwords don't match"
        exit 1
 fi       
 
-
+userdel $USERNAME
 useradd $USERNAME
 echo -e "$PASSWORD\n$PASSWORD" | passwd "$USERNAME" 
 echo -e "$PASSWORD\n$PASSWORD" | passwd root
@@ -33,9 +33,7 @@ pacman -S --needed --noconfirm i3 lightdm lightdm-gtk-greeter xorg-server xorg-x
 	network-manager-applet gvim
 
 MACHINE="$1"
-
-if [[ "$MACHINE"=="AMD" ]]
-then 
+if [ "$MACHINE" = "AMD" ]; then 
     echo "Installing AMD driver"	
     pacman -S --noconfirm xf86-video-amdgpu
 else 
@@ -43,6 +41,5 @@ else
     pacman -S --noconfirm virtualbox-guest-utils
 fi
 
-USERNAME=$2
 chown $USERNAME:$USERNAME /home/$USERNAME
-cd /home/$USERNAME
+systemctl enable lightdm
