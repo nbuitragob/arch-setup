@@ -130,6 +130,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt << EOF
 cd /home
 git clone https://github.com/nbuitragob/arch-setup
+ch arch-setup
 
 echo "setting up locale"
 cat /home/arch-setup/config/linux/locale.gen
@@ -185,6 +186,7 @@ fi
 #Yay installation
 git clone https://aur.archlinux.org/yay.git
 cd yay
+chown -R $USERNAME:$USERNAME /home/arch-setup
 sudo -u $USERNAME makepkg -si
 
 systemctl enable lightdm
