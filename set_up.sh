@@ -124,14 +124,6 @@ mount /dev/sda1 /boot/EFI
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# Root password for the brand new installed system
-ROOT_PASSWD=$PASSWORD
-#Admin user creation
-useradd $USERNAME
-echo -e "$PASSWORD\n$PASSWORD" | passwd "$USERNAME" 
-echo -e "$ROOT_PASSWD\n$ROOT_PASSWD" | passwd root
-echo -e "$USERNAME\tALL=(ALL:ALL) ALL" >> /etc/sudoers 
-
 #Additional programs
 echo "Installing additional programs"
 pacman -S --needed --noconfirm i3 lightdm lightdm-gtk-greeter xorg picom firefox xorg-server xorg-xinit lxterminal \
@@ -146,6 +138,14 @@ else
     sh /home/$USERNAME/arch-setup/vbox_resolution.sh
     pacman -S --noconfirm virtualbox-guest-utils
 fi
+
+# Root password for the brand new installed system
+ROOT_PASSWD=$PASSWORD
+#Admin user creation
+useradd $USERNAME
+echo -e "$PASSWORD\n$PASSWORD" | passwd "$USERNAME" 
+echo -e "$ROOT_PASSWD\n$ROOT_PASSWD" | passwd root
+echo -e "$USERNAME\tALL=(ALL:ALL) ALL" >> /etc/sudoers 
 
 #Yay installation
 git clone https://aur.archlinux.org/yay.git
