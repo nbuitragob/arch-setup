@@ -41,3 +41,4 @@ xrandr --output Virtual1 --mode "1920x1080_60.00"
 # - save the script file (with the necessary changes)
 # - run it at startup (search the web for "How To")
 # Thanks for the feedback!
+setxkbmap latam
