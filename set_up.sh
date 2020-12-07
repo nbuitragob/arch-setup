@@ -11,7 +11,6 @@ HOSTN=void-pc
 read -p 'Admin username: ' USERNAME
 
 # Admin's and root's password for the brand new installed system
-read -p 'test your keys' KEY_TEST
 read -sp 'Password: ' PASSWORD
 echo
 read -sp 'Verify password: ' PASSWORD_2
@@ -22,6 +21,7 @@ else
        exit 1
 fi
 
+PASSWORD=${PASSWORD//\"/\\\"}
 
 # Keyboard Layout
 KEYBOARD_LAYOUT=la-latin1
@@ -30,9 +30,6 @@ timedatectl set-ntp true
 
 # Loads the keyboard layout
 loadkeys $KEYBOARD_LAYOUT
-
-# Admin username for the brand new installed system
-read -p 'Admin username: ' USERNAME
 
 # Your language, used for localization purposes
 LANGUAGE=en_US
