@@ -150,8 +150,8 @@ fi
 #Yay installation
 loadkeys $KEYBOARD_LAYOUT
 git clone https://aur.archlinux.org/yay.git
+chown -R $USERNAME:$USERNAME /home/$USERNAME
 cd yay
-
 sudo -u $USERNAME makepkg -si
 
 systemctl enable lightdm
