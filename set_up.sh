@@ -21,4 +21,4 @@ loadkeys $KEYBOARD_LAYOUT
 #### Partitioning
 echo "HD Initialization"
 # Set the partition table to GPT type 
-printf "g\nn\n\n\n+1G\nn\n\n\n+4G\nt\n\n19\nn\n\n\n+100G\nn\n\n\n\nw\n" | fdisk /dev/sda
+printf "g\nn\n\n\n+1G\nt\n1\nn\n\n\n+4G\nt\n\n19\nn\n\n\n+100G\nn\n\n\n\nw\n" | fdisk /dev/sda
