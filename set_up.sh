@@ -130,7 +130,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt << EOF
 cd /home
 git clone https://github.com/nbuitragob/arch-setup
-ch arch-setup
+cd arch-setup
 
 echo "setting up locale"
 cat /home/arch-setup/config/linux/locale.gen
