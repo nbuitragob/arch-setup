@@ -111,8 +111,9 @@ echo "Running pactrap base base-devel git linux linux-firmware"
 pacstrap /mnt base base-devel git linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
-#################################################################################################################################################
+###########################################
 #### Enters in the new system (chroot) ####
+###########################################
 arch-chroot /mnt << EOF
 cd /home
 git clone https://github.com/nbuitragob/arch-setup
