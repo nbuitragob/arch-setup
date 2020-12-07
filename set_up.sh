@@ -7,6 +7,22 @@
 # Computer Name
 HOSTN=void-pc
 
+# Admin username for the brand new installed system
+read -p 'Admin username: ' USERNAME
+
+# Admin's and root's password for the brand new installed system
+read -p 'test your keys' KEY_TEST
+read -sp 'Password: ' PASSWORD
+echo
+read -sp 'Verify password: ' PASSWORD_2
+if [ "$PASSWORD" = "$PASSWORD_2" ]; then
+       echo -e "\npasswords match"
+else 
+       echo "passwords don't match"
+       exit 1
+fi
+
+
 # Keyboard Layout
 KEYBOARD_LAYOUT=la-latin1
 
@@ -131,10 +147,9 @@ fi
 # Root password for the brand new installed system
 
 #Admin user creation
-useradd $USERNAME
-passwd "$USERNAME" 
-passwd root
-echo -e "$USERNAME\tALL=(ALL:ALL) ALL" >> /etc/sudoers 
+sh -c "echo '$USERNAME:$PASSWORD' | chpasswd"
+sh -c "echo 'root:$PASSWORD' | chpasswd"
+sh -c "echo -e '$USERNAME\tALL=(ALL:ALL) ALL' >> /etc/sudoers" 
 
 #Yay installation
 git clone https://aur.archlinux.org/yay.git
