@@ -21,23 +21,6 @@ LANGUAGE=en_US
 # Geography Localization. Verify the directory /usr/share/zoneinfo/<Zone>/<SubZone>
 LOCALE=America/Bogota
 
-# Admin username for the brand new installed system
-read -p 'Admin username: ' USERNAME
-
-# Admin's and root's password for the brand new installed system
-read -sp 'Password: ' PASSWORD
-echo
-read -sp 'Verify password: ' PASSWORD_2
-if [ "$PASSWORD" = "$PASSWORD_2" ]; then
-       echo -e "\npasswords match"
-else 
-       echo "passwords don't match"
-       exit 1
-fi
-
-# Root password for the brand new installed system
-ROOT_PASSWD=$PASSWORD
-
 ########## Hard Disk Partitioning Variable
 # ANTENTION, this script erases ALL YOU HD DATA (specified bt $HD)
 read -p 'Filesystem e.g /dev/sda: ' HD
@@ -127,6 +110,23 @@ mount /dev/sda1 /boot/EFI
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
+# Admin username for the brand new installed system
+read -p 'Admin username: ' USERNAME
+
+# Admin's and root's password for the brand new installed system
+read -p 'test your keys' KEY_TEST
+read -sp 'Password: ' PASSWORD
+echo
+read -sp 'Verify password: ' PASSWORD_2
+if [ "$PASSWORD" = "$PASSWORD_2" ]; then
+       echo -e "\npasswords match"
+else 
+       echo "passwords don't match"
+       exit 1
+fi
+
+# Root password for the brand new installed system
+ROOT_PASSWD=$PASSWORD
 #Admin user creation
 useradd $USERNAME
 echo -e "$PASSWORD\n$PASSWORD" | passwd "$USERNAME" 
@@ -149,7 +149,6 @@ else
 fi
 
 #Yay installation
-loadkeys $KEYBOARD_LAYOUT
 git clone https://aur.archlinux.org/yay.git
 chown -R $USERNAME:$USERNAME /home/$USERNAME
 cd yay
