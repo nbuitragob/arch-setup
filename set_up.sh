@@ -166,7 +166,8 @@ cp /home/$USERNAME/arch-setup/config/lightdm/20-keyboard.conf /etc/X11/xorg.conf
 cp -r /home/$USERNAME/arch-setup/dotfiles/.config /home/$USERNAME/
 cp -r /home/$USERNAME/arch-setup/dotfiles/.bashrc /home/$USERNAME/
 cp -r /home/$USERNAME/arch-setup/wallpaper.png /home/$USERNAME/
-cp -r /home/$USERNAME/arch-setup/wallpaper.png /usr/share/backgrounds/gnome/
+cp -r /home/$USERNAME/arch-setup/wallpaper.png /usr/share/backgrounds/gnome/wallpaper.png
+chmod 644 /usr/share/backgrounds/gnome/wallpaper.png
 chown -R $USERNAME:$USERNAME /home/$USERNAME
 EOF
 
