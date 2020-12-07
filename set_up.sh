@@ -37,11 +37,11 @@ ROOT_PASSWD=$PASSWORD
 # ANTENTION, this script erases ALL YOU HD DATA (specified bt $HD)
 read -p 'Filesystem e.g /dev/sda: ' HD
 # Boot Partition Size: /boot
-BOOT_SIZE=1024
+BOOT_SIZE=+1G
 # Root Partition Size: /
-ROOT_SIZE=102400
+ROOT_SIZE=+100G
 # Swap partition size: /swap
-SWAP_SIZE=4096
+SWAP_SIZE=+4G
 # The /home partition will occupy the remain free space
 
 # Partitions file system
@@ -52,18 +52,6 @@ ROOT_FS=ext4
 EXTRA_PKGS='vim'
 
 
-######## Auxiliary variables. THIS SHOULD NOT BE ALTERED
-BOOT_START=1
-BOOT_END=$(($BOOT_START+$BOOT_SIZE))
-
-SWAP_START=$BOOT_END
-SWAP_END=$(($SWAP_START+$SWAP_SIZE))
-
-ROOT_START=$SWAP_END
-ROOT_END=$(($ROOT_START+$ROOT_SIZE))
-
-HOME_START=$ROOT_END
-
 ##################################################
 #		    Script 			 #
 ##################################################
@@ -73,6 +61,8 @@ loadkeys $KEYBOARD_LAYOUT
 #### Partitioning
 echo "HD Initialization"
 # Set the partition table to GPT type 
+printf 'g\nn\n\n\n+${BOOT_SIZE}\nn\n\n\n${SWAP_SIZE}\nt\n\n19\nn\n\n\n${ROOT_SIZE}\nn\n\n\n\nw\n' | fdisk 
+
 parted -s $HD mklabel gpt &> /dev/null
 
 # Remove any older partitions
