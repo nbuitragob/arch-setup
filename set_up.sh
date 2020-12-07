@@ -157,8 +157,7 @@ git clone https://aur.archlinux.org/yay.git
 chown -R $USERNAME:$USERNAME /home/$USERNAME
 cd yay
 sudo -u $USERNAME makepkg -si
-
-yay -S i3-gaps-rounded
+sudo -u $USERNAME yay -S i3-gaps-rounded-git
 
 systemctl enable lightdm
 mkdir -p /etc/X11/xorg.conf.d/
