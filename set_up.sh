@@ -165,6 +165,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 #Admin user creation
 useradd $USERNAME
+echo -e "$PASSWORD\n$PASSWORD" | passwd "$USERNAME" 
+echo -e "$ROOT_PASSWD\n$ROOT_PASSWD" | passwd root
 echo -e "$USERNAME\tALL=(ALL:ALL) ALL" >> /etc/sudoers 
 mkdir -p /home/$USERNAME
 
