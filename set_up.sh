@@ -179,11 +179,17 @@ else
     pacman -S --noconfirm virtualbox-guest-utils
 fi
 
+#Yay installation
+cd /home
+git clone https://aur.archlinux.org/yay.git
+cd yay
+sudo -u $USERNAME makepkg -si
+
 systemctl enable lightdm
 mkdir -p /etc/X11/xorg.conf.d/
 cp config/lightdm/20-keyboard.conf /etc/X11/xorg.conf.d/
-cp -r dotfiles/.config /home/melferas/
-cp -r dotfiles/.bashrc /home/melferas/
+cp -r dotfiles/.config /home/$USERNAME/
+cp -r dotfiles/.bashrc /home/$USERNAME/
 chown -R $USERNAME:$USERNAME /home/$USERNAME
 EOF
 
