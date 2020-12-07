@@ -19,7 +19,6 @@ loadkeys $KEYBOARD_LAYOUT
 read -p 'Admin username: ' USERNAME
 
 # Admin's and root's password for the brand new installed system
-read -p 'test your keys' KEY_TEST
 read -sp 'Password: ' PASSWORD
 echo
 read -sp 'Verify password: ' PASSWORD_2
@@ -125,8 +124,6 @@ mount /dev/sda1 /boot/EFI
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
-
-
 # Root password for the brand new installed system
 ROOT_PASSWD=$PASSWORD
 #Admin user creation
@@ -151,7 +148,6 @@ else
 fi
 
 #Yay installation
-echo "PASSSSSSSSSSSSSSSSSSSSSSWWWWWWWWWWWWWWWWWWWOOOOOOOOOORRRRRRRRRRRD $PASSWORD"
 git clone https://aur.archlinux.org/yay.git
 chown -R $USERNAME:$USERNAME /home/$USERNAME
 cd yay
