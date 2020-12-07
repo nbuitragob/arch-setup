@@ -101,7 +101,7 @@ parted -s -- $HD mkpart primary $HOME_FS $HOME_START -0 1>/dev/null
 # Formats the root, home and boot partition to the specified file system
 echo "Formating boot partition"
 echo "mkfs.$BOOT_FS ${HD}1 -L Boot 1>/dev/null"
-mkfs.fat -F32 ${HD}1 -L Boot 1>/dev/null
+mkfs.fat -F32 ${HD}1 1>/dev/null
 echo "Formating root partition"
 mkfs.$ROOT_FS ${HD}3 -L Root 1>/dev/null
 echo "Formating home partition"
