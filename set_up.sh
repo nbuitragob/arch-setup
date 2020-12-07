@@ -173,7 +173,7 @@ mkdir -p /home/$USERNAME
 #Additional programs
 echo "Installing additional programs"
 pacman -S --needed --noconfirm i3 lightdm lightdm-gtk-greeter xorg picom firefox xorg-server xorg-xinit lxterminal \
-	network-manager-applet gvim lightdm-webkit2-greeter feh
+	network-manager-applet gvim lightdm-webkit2-greeter feh thunar go
 	
 MACHINE="$1"
 if [ "$MACHINE" = "AMD" ]; then 
