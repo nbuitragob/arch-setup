@@ -10,6 +10,11 @@ HOSTN=void-pc
 # Keyboard Layout
 KEYBOARD_LAYOUT=la-latin1
 
+timedatectl set-ntp true
+
+# Loads the keyboard layout
+loadkeys $KEYBOARD_LAYOUT
+
 # Your language, used for localization purposes
 LANGUAGE=en_US
 
@@ -51,9 +56,6 @@ ROOT_FS=ext4
 ##################################################
 #		    Script 			 #
 ##################################################
-# Loads the keyboard layout
-loadkeys $KEYBOARD_LAYOUT
-
 #### Partitioning
 echo "HD Initialization"
 # Set the partition table to GPT type 
@@ -71,7 +73,6 @@ mkfs.$HOME_FS ${HD}4 -L Home 1>/dev/null
 echo "Formating swap partition"
 mkswap ${HD}2
 swapon ${HD}2
-
 
 echo "Mounting partitions"
 # mounts the root partition
