@@ -128,17 +128,20 @@ genfstab -p /mnt >> /mnt/etc/fstab
 #################################################################################################################################################
 #### Enters in the new system (chroot) ####
 arch-chroot /mnt << EOF
+cd /home
+git clone https://github.com/nbuitragob/arch-setup
+
 echo "setting up locale"
-cat config/linux/locale.gen
-cp config/linux/locale.gen /etc/locale.gen
+cat /home/arch-setup/config/linux/locale.gen
+cp /home/arch-setup/config/linux/locale.gen /etc/locale.gen
 
 echo "setting up host"
-cat config/linux/hostname
+cat /home/arch-setup/config/linux/hostname
 echo 
-cat config/linux/hosts
-cp config/linux/hostname /etc/hostname
-cp config/linux/hosts /etc/hosts
-cp config/linux/vconsole.conf /etc/vconsole.conf
+cat /home/arch-setup/config/linux/hosts
+cp /home/arch-setup/config/linux/hostname /etc/hostname
+cp /home/arch-setup/config/linux/hosts /etc/hosts
+cp /home/arch-setup/config/linux/vconsole.conf /etc/vconsole.conf
 
 echo "Setting up locale ln -sf /usr/share/zoneinfo/$LOCALE /etc/localtime"
 ln -sf /usr/share/zoneinfo/$LOCALE /etc/localtime
@@ -175,21 +178,20 @@ if [ "$MACHINE" = "AMD" ]; then
     pacman -S --noconfirm xf86-video-amdgpu
 else 
     echo "Installing VBOX driver"
-    sh vbox_resolution.sh
+    sh /home/arch-setup/vbox_resolution.sh
     pacman -S --noconfirm virtualbox-guest-utils
 fi
 
 #Yay installation
-cd /home
 git clone https://aur.archlinux.org/yay.git
 cd yay
 sudo -u $USERNAME makepkg -si
 
 systemctl enable lightdm
 mkdir -p /etc/X11/xorg.conf.d/
-cp config/lightdm/20-keyboard.conf /etc/X11/xorg.conf.d/
-cp -r dotfiles/.config /home/$USERNAME/
-cp -r dotfiles/.bashrc /home/$USERNAME/
+cp /home/arch-setup/config/lightdm/20-keyboard.conf /etc/X11/xorg.conf.d/
+cp -r /home/arch-setup/dotfiles/.config /home/$USERNAME/
+cp -r /home/arch-setup/dotfiles/.bashrc /home/$USERNAME/
 chown -R $USERNAME:$USERNAME /home/$USERNAME
 EOF
 
