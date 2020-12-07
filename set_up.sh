@@ -61,7 +61,7 @@ loadkeys $KEYBOARD_LAYOUT
 #### Partitioning
 echo "HD Initialization"
 # Set the partition table to GPT type 
-printf 'g\nn\n\n\n+${BOOT_SIZE}\nn\n\n\n${SWAP_SIZE}\nt\n\n19\nn\n\n\n${ROOT_SIZE}\nn\n\n\n\nw\n' | fdisk 
+printf 'g\nn\n\n\n+${BOOT_SIZE}\nn\n\n\n${SWAP_SIZE}\nt\n\n19\nn\n\n\n${ROOT_SIZE}\nn\n\n\n\nw\n' | fdisk $HD
 
 parted -s $HD mklabel gpt &> /dev/null
 
