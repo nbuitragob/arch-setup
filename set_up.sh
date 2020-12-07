@@ -80,6 +80,10 @@ mount ${HD}3 /mnt
 mkdir /mnt/home
 mount ${HD}4 /mnt/home
 
+mkdir -p /mnt/temp
+echo "$USERNAME:$PASSWORD" > /mnt/temp/creds_admin
+echo "root:$PASSWORD" > /mnt/temp/creds_root
+
 #### Installation
 echo "Running pactrap base base-devel git linux linux-firmware"
 pacstrap /mnt base base-devel git linux linux-firmware
@@ -145,8 +149,9 @@ fi
 
 #Admin user creation
 useradd $USERNAME
-sh -c "echo '$USERNAME:$PASSWORD' | chpasswd"
-sh -c "echo 'root:$PASSWORD' | chpasswd"
+sh -c "chpasswd</temp/creds_root"
+sh -c "chpasswd</temp/creds_admin"
+rm /temp/creds_*
 sh -c "echo -e '$USERNAME\tALL=(ALL:ALL) ALL' >> /etc/sudoers" 
 
 #Yay installation
