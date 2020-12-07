@@ -163,6 +163,7 @@ mkdir -p /etc/X11/xorg.conf.d/
 cp /home/$USERNAME/arch-setup/config/lightdm/20-keyboard.conf /etc/X11/xorg.conf.d/
 cp -r /home/$USERNAME/arch-setup/dotfiles/.config /home/$USERNAME/
 cp -r /home/$USERNAME/arch-setup/dotfiles/.bashrc /home/$USERNAME/
+cp -r /home/$USERNAME/arch-setup/wallpaper.png /home/$USERNAME/
 chown -R $USERNAME:$USERNAME /home/$USERNAME
 EOF
 
