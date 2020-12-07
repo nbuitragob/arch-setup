@@ -21,8 +21,6 @@ else
        exit 1
 fi
 
-PASSWORD=${PASSWORD//\"/\\\"}
-
 # Keyboard Layout
 KEYBOARD_LAYOUT=la-latin1
 
