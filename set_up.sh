@@ -59,34 +59,9 @@ echo "HD Initialization"
 # Set the partition table to GPT type 
 printf "g\nn\n\n\n${BOOT_SIZE}\nt\n1\nn\n\n\n${SWAP_SIZE}\nt\n\n19\nn\n\n\n${ROOT_SIZE}\nn\n\n\n\nw\n" | fdisk $HD
 
-parted -s $HD mklabel gpt &> /dev/null
-
-# Remove any older partitions
-parted -s $HD rm 1 &> /dev/null
-parted -s $HD rm 2 &> /dev/null
-parted -s $HD rm 3 &> /dev/null
-parted -s $HD rm 4 &> /dev/null
-
-# Create boot partition
-echo "Create boot partition"
-parted -s $HD mkpart primary $BOOT_FS $BOOT_START $BOOT_END 1>/dev/null
-parted -s $HD set 1 boot on 1>/dev/null
-
-# Create swap partition
-echo "Create swap partition"
-parted -s $HD mkpart primary linux-swap $SWAP_START $SWAP_END 1>/dev/null
-
-# Create root partition
-echo "Create root partition"
-parted -s $HD mkpart primary $ROOT_FS $ROOT_START $ROOT_END 1>/dev/null
-
-# Create home partition
-echo "Create home partition"
-parted -s -- $HD mkpart primary $HOME_FS $HOME_START -0 1>/dev/null
 
 # Formats the root, home and boot partition to the specified file system
 echo "Formating boot partition"
-echo "mkfs.$BOOT_FS ${HD}1 -L Boot 1>/dev/null"
 mkfs.fat -F32 ${HD}1 1>/dev/null
 echo "Formating root partition"
 mkfs.$ROOT_FS ${HD}3 -L Root 1>/dev/null
@@ -104,7 +79,6 @@ mount ${HD}3 /mnt
 # mounts the home partition
 mkdir /mnt/home
 mount ${HD}4 /mnt/home
-
 
 #### Installation
 echo "Running pactrap base base-devel git linux linux-firmware"
