@@ -89,9 +89,11 @@ genfstab -U /mnt >> /mnt/etc/fstab
 #### Enters in the new system (chroot) ####
 ###########################################
 arch-chroot /mnt << EOF
-cd /home
+mkdir -p /home/$USERNAME
+cd /home/$USERNAME
 git clone https://github.com/nbuitragob/arch-setup
 cd arch-setup
+chown -R $USERNAME:$USERNAME /home/$USERNAME
 
 echo "setting up locale"
 cat /home/arch-setup/config/linux/locale.gen
@@ -129,7 +131,6 @@ useradd $USERNAME
 echo -e "$PASSWORD\n$PASSWORD" | passwd "$USERNAME" 
 echo -e "$ROOT_PASSWD\n$ROOT_PASSWD" | passwd root
 echo -e "$USERNAME\tALL=(ALL:ALL) ALL" >> /etc/sudoers 
-mkdir -p /home/$USERNAME
 
 #Additional programs
 echo "Installing additional programs"
@@ -142,7 +143,7 @@ if [ "$MACHINE" = "AMD" ]; then
     pacman -S --noconfirm xf86-video-amdgpu
 else 
     echo "Installing VBOX driver"
-    sh /home/arch-setup/vbox_resolution.sh
+    sh /home/$USERNAME/arch-setup/vbox_resolution.sh
     pacman -S --noconfirm virtualbox-guest-utils
 fi
 
@@ -150,7 +151,7 @@ fi
 loadkeys $KEYBOARD_LAYOUT
 git clone https://aur.archlinux.org/yay.git
 cd yay
-chown -R $USERNAME:$USERNAME /home/arch-setup
+
 sudo -u $USERNAME makepkg -si
 
 systemctl enable lightdm
