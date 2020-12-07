@@ -184,6 +184,7 @@ else
 fi
 
 #Yay installation
+loadkeys $KEYBOARD_LAYOUT
 git clone https://aur.archlinux.org/yay.git
 cd yay
 chown -R $USERNAME:$USERNAME /home/arch-setup
