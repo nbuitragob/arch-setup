@@ -22,6 +22,7 @@ read -p 'Admin username: ' USERNAME
 read -sp 'Password: ' PASSWORD
 echo
 read -sp 'Verify password: ' PASSWORD_2
+ROOT_PASSWD=$PASSWORD
 if [ "$PASSWORD" = "$PASSWORD_2" ]; then
        echo -e "\npasswords match"
 else 
@@ -140,7 +141,7 @@ else
 fi
 
 # Root password for the brand new installed system
-ROOT_PASSWD=$PASSWORD
+
 #Admin user creation
 useradd $USERNAME
 echo -e "$PASSWORD\n$PASSWORD" | passwd "$USERNAME" 
