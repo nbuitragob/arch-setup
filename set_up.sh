@@ -144,6 +144,7 @@ fi
 # Root password for the brand new installed system
 
 #Admin user creation
+useradd $USERNAME
 sh -c "echo '$USERNAME:$PASSWORD' | chpasswd"
 sh -c "echo 'root:$PASSWORD' | chpasswd"
 sh -c "echo -e '$USERNAME\tALL=(ALL:ALL) ALL' >> /etc/sudoers" 
