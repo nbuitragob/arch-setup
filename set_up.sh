@@ -18,18 +18,6 @@ loadkeys $KEYBOARD_LAYOUT
 # Admin username for the brand new installed system
 read -p 'Admin username: ' USERNAME
 
-# Admin's and root's password for the brand new installed system
-read -sp 'Password: ' PASSWORD
-echo
-read -sp 'Verify password: ' PASSWORD_2
-ROOT_PASSWD=$PASSWORD
-if [ "$PASSWORD" = "$PASSWORD_2" ]; then
-       echo -e "\npasswords match"
-else 
-       echo "passwords don't match"
-       exit 1
-fi
-
 # Your language, used for localization purposes
 LANGUAGE=en_US
 
@@ -144,8 +132,8 @@ fi
 
 #Admin user creation
 useradd $USERNAME
-echo -e "$PASSWORD\n$PASSWORD" | passwd "$USERNAME" 
-echo -e "$ROOT_PASSWD\n$ROOT_PASSWD" | passwd root
+passwd "$USERNAME" 
+passwd root
 echo -e "$USERNAME\tALL=(ALL:ALL) ALL" >> /etc/sudoers 
 
 #Yay installation
