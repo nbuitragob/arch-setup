@@ -37,11 +37,11 @@ ROOT_PASSWD=$PASSWORD
 # ANTENTION, this script erases ALL YOU HD DATA (specified bt $HD)
 read -p 'Filesystem e.g /dev/sda: ' HD
 # Boot Partition Size: /boot
-BOOT_SIZE=1024
+BOOT_SIZE=1024M
 # Root Partition Size: /
-ROOT_SIZE=102400
+ROOT_SIZE=102400M
 # Swap partition size: /swap
-SWAP_SIZE=4096
+SWAP_SIZE=4096M
 # The /home partition will occupy the remain free space
 
 # Partitions file system
