@@ -16,22 +16,6 @@ LANGUAGE=en_US
 # Geography Localization. Verify the directory /usr/share/zoneinfo/<Zone>/<SubZone>
 LOCALE=America/Bogota
 
-# Admin username for the brand new installed system
-read -p 'Admin username: ' USERNAME
-
-# Admin's and root's password for the brand new installed system
-read -sp 'Password: ' PASSWORD
-echo
-read -sp 'Verify password: ' PASSWORD_2
-if [ "$PASSWORD" = "$PASSWORD_2" ]; then
-       echo -e "\npasswords match"
-else 
-       echo "passwords don't match"
-       exit 1
-fi
-
-# Root password for the brand new installed system
-
 loadkeys $KEYBOARD_LAYOUT
 
 #### Partitioning
