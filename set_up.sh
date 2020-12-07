@@ -123,7 +123,7 @@ mount ${HD}4 /mnt/home
 #### Installation
 echo "Running pactrap base base-devel git linux linux-firmware"
 pacstrap /mnt base base-devel git linux linux-firmware
-genfstab -p /mnt >> /mnt/etc/fstab
+genfstab -U /mnt >> /mnt/etc/fstab
 
 #################################################################################################################################################
 #### Enters in the new system (chroot) ####
