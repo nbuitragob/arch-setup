@@ -15,6 +15,21 @@ timedatectl set-ntp true
 # Loads the keyboard layout
 loadkeys $KEYBOARD_LAYOUT
 
+# Admin username for the brand new installed system
+read -p 'Admin username: ' USERNAME
+
+# Admin's and root's password for the brand new installed system
+read -p 'test your keys' KEY_TEST
+read -sp 'Password: ' PASSWORD
+echo
+read -sp 'Verify password: ' PASSWORD_2
+if [ "$PASSWORD" = "$PASSWORD_2" ]; then
+       echo -e "\npasswords match"
+else 
+       echo "passwords don't match"
+       exit 1
+fi
+
 # Your language, used for localization purposes
 LANGUAGE=en_US
 
@@ -110,20 +125,7 @@ mount /dev/sda1 /boot/EFI
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# Admin username for the brand new installed system
-read -p 'Admin username: ' USERNAME
 
-# Admin's and root's password for the brand new installed system
-read -p 'test your keys' KEY_TEST
-read -sp 'Password: ' PASSWORD
-echo
-read -sp 'Verify password: ' PASSWORD_2
-if [ "$PASSWORD" = "$PASSWORD_2" ]; then
-       echo -e "\npasswords match"
-else 
-       echo "passwords don't match"
-       exit 1
-fi
 
 # Root password for the brand new installed system
 ROOT_PASSWD=$PASSWORD
@@ -149,6 +151,7 @@ else
 fi
 
 #Yay installation
+echo "PASSSSSSSSSSSSSSSSSSSSSSWWWWWWWWWWWWWWWWWWWOOOOOOOOOORRRRRRRRRRRD $PASSWORD"
 git clone https://aur.archlinux.org/yay.git
 chown -R $USERNAME:$USERNAME /home/$USERNAME
 cd yay
