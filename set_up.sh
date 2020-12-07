@@ -97,16 +97,16 @@ cd arch-setup
 chown -R $USERNAME:$USERNAME /home/$USERNAME
 
 echo "setting up locale"
-cat /home/arch-setup/config/linux/locale.gen
-cp /home/arch-setup/config/linux/locale.gen /etc/locale.gen
+cat /home/$USERNAME/arch-setup/config/linux/locale.gen
+cp /home/$USERNAME/arch-setup/config/linux/locale.gen /etc/locale.gen
 
 echo "setting up host"
-cat /home/arch-setup/config/linux/hostname
+cat /home/$USERNAME/arch-setup/config/linux/hostname
 echo 
-cat /home/arch-setup/config/linux/hosts
-cp /home/arch-setup/config/linux/hostname /etc/hostname
-cp /home/arch-setup/config/linux/hosts /etc/hosts
-cp /home/arch-setup/config/linux/vconsole.conf /etc/vconsole.conf
+cat /home/$USERNAME/arch-setup/config/linux/hosts
+cp /home/$USERNAME/arch-setup/config/linux/hostname /etc/hostname
+cp /home/$USERNAME/arch-setup/config/linux/hosts /etc/hosts
+cp /home/$USERNAME/arch-setup/config/linux/vconsole.conf /etc/vconsole.conf
 
 echo "Setting up locale ln -sf /usr/share/zoneinfo/$LOCALE /etc/localtime"
 ln -sf /usr/share/zoneinfo/$LOCALE /etc/localtime
@@ -157,9 +157,9 @@ sudo -u $USERNAME makepkg -si
 
 systemctl enable lightdm
 mkdir -p /etc/X11/xorg.conf.d/
-cp /home/arch-setup/config/lightdm/20-keyboard.conf /etc/X11/xorg.conf.d/
-cp -r /home/arch-setup/dotfiles/.config /home/$USERNAME/
-cp -r /home/arch-setup/dotfiles/.bashrc /home/$USERNAME/
+cp /home/$USERNAME/arch-setup/config/lightdm/20-keyboard.conf /etc/X11/xorg.conf.d/
+cp -r /home/$USERNAME/arch-setup/dotfiles/.config /home/$USERNAME/
+cp -r /home/$USERNAME/arch-setup/dotfiles/.bashrc /home/$USERNAME/
 chown -R $USERNAME:$USERNAME /home/$USERNAME
 EOF
 
