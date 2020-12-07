@@ -35,7 +35,7 @@ ROOT_PASSWD=$PASSWORD
 
 ########## Hard Disk Partitioning Variable
 # ANTENTION, this script erases ALL YOU HD DATA (specified bt $HD)
-read -sp 'Filesystem e.g /dev/sda: ' HD
+read -p 'Filesystem e.g /dev/sda: ' HD
 # Boot Partition Size: /boot
 BOOT_SIZE=1024
 # Root Partition Size: /
