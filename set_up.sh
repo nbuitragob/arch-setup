@@ -131,7 +131,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 #Additional programs
 echo "Installing additional programs"
 pacman -S --needed --noconfirm i3 lightdm lightdm-gtk-greeter xorg picom firefox xorg-server xorg-xinit lxterminal \
-	network-manager-applet gvim lightdm-webkit2-greeter feh thunar go pulseaudio pulseaudio-alsa pavucontrol
+	network-manager-applet gvim lightdm-webkit2-greeter feh thunar go pulseaudio pulseaudio-alsa pavucontrol dmenu
 	
 MACHINE="$1"
 if [ "$MACHINE" = "AMD" ]; then 
