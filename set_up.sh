@@ -159,7 +159,7 @@ cd yay
 sudo -u $USERNAME makepkg -si
 
 
-sudo -u $USERNAME yay -S  --noconfirm i3-gaps-rounded-git
+sh -c "printf '\n\n\n' | sudo -u $USERNAME yay -S i3-gaps-rounded-git"
 
 systemctl enable lightdm
 mkdir -p /etc/X11/xorg.conf.d/
