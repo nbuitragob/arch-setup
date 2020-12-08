@@ -158,9 +158,6 @@ chown -R $USERNAME:$USERNAME /home/$USERNAME
 cd yay
 sudo -u $USERNAME makepkg -si
 
-
-sh -c "printf '\n\n\n' | sudo -u $USERNAME yay -S i3-gaps-rounded-git"
-
 systemctl enable lightdm
 mkdir -p /etc/X11/xorg.conf.d/
 cp /home/$USERNAME/arch-setup/config/lightdm/20-keyboard.conf /etc/X11/xorg.conf.d/
