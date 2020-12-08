@@ -151,10 +151,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
+        # Pressing left will shrink the windowâs width.
+        # Pressing right will grow the windowâs width.
+        # Pressing up will shrink the windowâs height.
+        # Pressing down will grow the windowâs height.
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
@@ -180,3 +180,14 @@ bar {
         position top
         status_command i3status
 }
+
+exec --no-startup-id exec bash feh --bg-scale '/home/melferas/wallpaper.png'
+
+for_window [class=".*"] border pixel 2
+gaps inner 10
+gaps outer 25 
+
+################# i3-radius #######################
+smart_borders on
+smart_borders no_gaps
+border_radius 8
