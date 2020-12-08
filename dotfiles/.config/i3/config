@@ -190,4 +190,4 @@ gaps outer 25
 ################# i3-radius #######################
 smart_borders on
 smart_borders no_gaps
-border_radius 8
+border_radius 16
