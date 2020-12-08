@@ -133,14 +133,17 @@ grub-mkconfig -o /boot/grub/grub.cfg
 #Additional programs
 echo "Installing additional programs"
 pacman -S --needed --noconfirm i3 lightdm lightdm-gtk-greeter xorg picom firefox xorg-server xorg-xinit lxterminal \
-	network-manager-applet gvim lightdm-webkit2-greeter feh thunar go pulseaudio pulseaudio-alsa pavucontrol dmenu
+	network-manager-applet gvim lightdm-webkit2-greeter feh thunar go pulseaudio pulseaudio-alsa pavucontrol dmenu \
+        lxappearance 
 	
 MACHINE="$1"
 if [ "$MACHINE" = "AMD" ]; then 
     echo "Installing AMD driver"	
+    rm /home/$USERNAME/arch-setup/dotfiles/.config/picom.conf.vbox
     pacman -S --noconfirm xf86-video-amdgpu
 else 
     echo "Installing VBOX driver"
+    mv /home/$USERNAME/arch-setup/dotfiles/.config/picom.conf.vbox  /home/$USERNAME/arch-setup/dotfiles/.config/picom.conf
     sh /home/$USERNAME/arch-setup/vbox_resolution.sh
     pacman -S --noconfirm virtualbox-guest-utils
 fi
@@ -175,5 +178,3 @@ chmod 644 /usr/share/backgrounds/gnome/wallpaper.png
 chown -R $USERNAME:$USERNAME /home/$USERNAME
 EOF
 
-echo "Umounting partitions"
-umount /mnt/{boot,home,}
