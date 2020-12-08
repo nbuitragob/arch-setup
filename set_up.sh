@@ -31,6 +31,7 @@ loadkeys $KEYBOARD_LAYOUT
 
 # Your language, used for localization purposes
 LANGUAGE=en_US
+LOCALECTL=en_US.UTF-8
 
 # Geography Localization. Verify the directory /usr/share/zoneinfo/<Zone>/<SubZone>
 LOCALE=America/Bogota
@@ -115,7 +116,8 @@ ln -sf /usr/share/zoneinfo/$LOCALE /etc/localtime
 echo "hwclock --systohc"
 hwclock --systohc
 echo "locale-gen"
-locale-gen
+localectl set-locale LANG=LOCALECTL
+locale-gen $LOCALECTL
 
 #grub installation
 echo "installing grub sudo networkmanager efibootmgr dosfstools os-prober mtools"
@@ -161,8 +163,12 @@ sudo -u $USERNAME makepkg -si
 systemctl enable lightdm
 mkdir -p /etc/X11/xorg.conf.d/
 cp /home/$USERNAME/arch-setup/config/lightdm/20-keyboard.conf /etc/X11/xorg.conf.d/
+cp -r /home/$USERNAME/arch-setup/profile_picture.svg /usr/share/pixmaps/archlinux-user.svg
 cp -r /home/$USERNAME/arch-setup/dotfiles/.config /home/$USERNAME/
+chmod 644 /usr/share/pixmaps/archlinux-user.svg
 cp -r /home/$USERNAME/arch-setup/dotfiles/.bashrc /home/$USERNAME/
+cp -r /home/$USERNAME/arch-setup/dotfiles/.vimrc /home/$USERNAME/
+cp -r /home/$USERNAME/arch-setup/dotfiles/.Xresources /home/$USERNAME/
 cp -r /home/$USERNAME/arch-setup/wallpaper.png /home/$USERNAME/
 cp -r /home/$USERNAME/arch-setup/wallpaper.png /usr/share/backgrounds/gnome/wallpaper.png
 chmod 644 /usr/share/backgrounds/gnome/wallpaper.png
