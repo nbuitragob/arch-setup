@@ -42,7 +42,7 @@ read -p 'Filesystem e.g /dev/sda: ' HD
 # Boot Partition Size: /boot
 BOOT_SIZE=+1G
 # Root Partition Size: /
-ROOT_SIZE=+100G
+ROOT_SIZE=+50G
 # Swap partition size: /swap
 SWAP_SIZE=+4G
 # The /home partition will occupy the remain free space
